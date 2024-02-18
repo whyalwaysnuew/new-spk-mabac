@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class Kriteria extends Model
 {
-    protected $table            = 'kriterias';
+    protected $table            = 'kriteria';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
@@ -39,4 +39,35 @@ class Kriteria extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getData()
+    {
+        $query = $this->db->table('kriteria')
+                ->orderBy('kode_kriteria')
+                ->get();
+
+        return $query->getResult();
+    }
+
+    public function insertData($data)
+    {
+        return $this->db->table('kriteria')
+                ->insert($data);
+    }
+
+    public function checkKodeKriteria($kodeKriteria)
+    {
+        $query = $this->db->table('kriteria')
+                ->where('kode_kriteria', $kodeKriteria)
+                ->get();
+
+        return $query->getRow();
+    }
+
+    public function deleteData($id)
+    {
+        $query = $this->db->table('kriteria')
+                ->where('id', $id)
+                ->delete();
+    }
 }

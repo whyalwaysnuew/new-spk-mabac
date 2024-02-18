@@ -4,9 +4,9 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class SubKriteria extends Model
+class Subkriteria extends Model
 {
-    protected $table            = 'subkriterias';
+    protected $table            = 'sub_kriteria';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
@@ -39,4 +39,18 @@ class SubKriteria extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getData()
+    {
+        $query = $this->db->table('sub_kriteria')->get();
+
+        return $query->getResult();
+    }
+
+    public function getDataKriteria()
+    {
+        $query = $this->db->table('kriteria')->get();
+
+        return $query->getResult();
+    }
 }

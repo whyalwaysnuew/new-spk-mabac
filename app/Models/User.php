@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class User extends Model
 {
-    protected $table            = 'users';
+    protected $table            = 'user';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
@@ -39,4 +39,15 @@ class User extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+
+    public function getData()
+    {
+        $query = $this->db->table('user')
+                ->select('user.id, user.nama, user.email, user.username, user_level.user_level')
+                ->join('user_level', 'user_level.id = user.id_user_level')
+                ->get();
+    
+        return $query->getResult();
+    }
 }

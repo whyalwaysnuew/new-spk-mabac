@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class Alternatif extends Model
 {
-    protected $table            = 'alternatifs';
+    protected $table            = 'alternatif';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
@@ -39,4 +39,39 @@ class Alternatif extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getDataAlternatif()
+    {
+        $query = $this->db->table('alternatif')->get();
+
+        return $query->getResult();
+    }
+
+    public function insertData($data)
+    {
+        return $this->db->table('alternatif')
+                ->insert($data);
+    }
+
+    public function deleteData($id)
+    {
+        $query = $this->db->table('alternatif')
+                ->where('id', $id)
+                ->delete();
+    }
+
+    public function hapus_nilai_v()
+    {
+        return $this->db->table('nilai_v')->truncate();
+    }
+
+    public function hapus_penilaian()
+    {
+        return $this->db->table('penilaian')->truncate();
+    }
+
+    public function hapus_hasil()
+    {
+        return $this->db->table('hasil')->truncate();
+    }
 }
