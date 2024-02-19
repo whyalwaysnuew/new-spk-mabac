@@ -28,6 +28,11 @@ $routes->get('/perhitungan/hasil', 'Perhitungan::hasil');
 
 
 $routes->get('/penilaian', 'Penilaian::index');
+$routes->post('/penilaian/store', 'Penilaian::store');
+$routes->post('/penilaian/update', 'Penilaian::update');
+$routes->post('/penilaian/dump', 'Penilaian::dump');
+$routes->get('/penilaian/modalEdit', 'Penilaian::modalEdit');
+$routes->get('/penilaian/modalInput', 'Penilaian::modalInput');
 
 
 $routes->get('/kriteria', 'Kriteria::index');
@@ -38,6 +43,7 @@ $routes->post('/kriteria/removeFile', 'Kriteria::removeFile');
 $routes->get('/kriteria/delete', 'Kriteria::delete');
 
 $routes->get('/subkriteria', 'Subkriteria::index');
+$routes->get('/subkriteria/delete', 'Subkriteria::delete');
 $routes->get('/subkriteria/getModalUpload', 'Subkriteria::getModalUpload');
 $routes->post('/subkriteria/upload', 'Subkriteria::upload');
 $routes->post('/subkriteria/removeFile', 'Subkriteria::removeFile');

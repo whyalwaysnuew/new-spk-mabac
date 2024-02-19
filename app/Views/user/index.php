@@ -43,11 +43,11 @@
                                                 <td><?= $user->username; ?></td>
                                                 <td><?= $user->user_level; ?></td>
                                                 <td class="text-center align-middle">
-                                                    <a href="<?= base_url('/user/edit/') . $user->id; ?>" type="button" class="btn btn-warning btn-sm" title="Edit">
+                                                    <a href="<?= base_url('/user/edit/') . $user->id_user; ?>" type="button" class="btn btn-warning btn-sm" title="Edit">
                                                         <i class="far fa-edit"></i>
                                                     </a>
                                                     
-                                                    <button id="removeUser" data-id="<?= $user->id; ?>" type="button" class="btn btn-danger btn-sm" title="Delete">
+                                                    <button id="removeUser" data-id="<?= $user->id_user; ?>" type="button" class="btn btn-danger btn-sm" title="Delete">
                                                         <i class="far fa-trash-alt"></i>
                                                     </button>
                                                 </td>

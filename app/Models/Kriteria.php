@@ -67,7 +67,7 @@ class Kriteria extends Model
     public function deleteData($id)
     {
         $query = $this->db->table('kriteria')
-                ->where('id', $id)
+                ->where('id_kriteria', $id)
                 ->delete();
     }
 }

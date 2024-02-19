@@ -56,7 +56,7 @@ class Alternatif extends Model
     public function deleteData($id)
     {
         $query = $this->db->table('alternatif')
-                ->where('id', $id)
+                ->where('id_alternatif', $id)
                 ->delete();
     }
 

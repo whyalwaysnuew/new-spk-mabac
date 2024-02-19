@@ -9,14 +9,10 @@
                         <h1 class="h3 mb-0 text-gray-800">Data Perhitungan</h1>
                     </div>
 
-
-                    <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <!-- /.card-header -->
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-daark">
-                                <i class="fa fa-table"></i> Normalisasi Matriks Keputusan (N)
-                            </h6>
+                            <h6 class="m-0 font-weight-bold text-daark"><i class="fa fa-table"></i> Matriks jarak alternatif dari daerah perkiraan perbatasan (Q)</h6>
                         </div>
 
                         <div class="card-body">
@@ -29,32 +25,40 @@
                                             <?php foreach ($kriteria as $key): ?>
                                             <th><?= $key->kode_kriteria ?></th>
                                             <?php endforeach ?>
+                                            <th>Total Nilai</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
+                                            $perhitungan_model->hapus_hasil();
                                             $no=1;
                                             foreach ($alternatif as $keys): ?>
                                         <tr align="center">
                                             <td><?= $no; ?></td>
                                             <td align="left"><?= $keys->nama ?></td>
-                                            <?php foreach ($kriteria as $key): ?>
+                                            <?php
+                                            $t_q = 0;
+                                            foreach ($kriteria as $key): ?>
                                             <td>
                                             <?php 
-                                                $data_pencocokan = $perhitungan_model->data_nilai($keys->id_alternatif,$key->id_kriteria);
-                                                $min_max=$perhitungan_model->get_max_min($key->id_kriteria);
-                                                if($min_max['jenis']=='Benefit'){
-                                                    echo @(($data_pencocokan['nilai']-$min_max['min'])/($min_max['max']-$min_max['min']));
-                                                }else{
-                                                    echo @(($data_pencocokan['nilai']-$min_max['max'])/($min_max['min']-$min_max['max']));
-                                                }
+                                                $nilai_b = $perhitungan_model->get_nilai_v($keys->id_alternatif,$key->id_kriteria);
+                                                $nilai_g = $perhitungan_model->get_nilai_g($key->id_kriteria);
+                                                echo $n_q = $nilai_b['nilai']-$nilai_g['nilai'];
+                                                $t_q += $n_q;
                                             ?>
                                             </td>
-                                            <?php endforeach ?>
+                                            <?php endforeach;
+                                            $hasil_akhir = [
+                                                'id_alternatif' => $keys->id_alternatif,
+                                                'nilai' => $t_q
+                                            ];
+                                            $perhitungan_model->insert_nilai_hasil($hasil_akhir);
+                                            ?>
+                                            <td><?=$t_q; ?></td>
                                         </tr>
                                         <?php
                                             $no++;
-                                            endforeach ?>
+                                            endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -63,11 +67,5 @@
 
                 </div>
                 <!-- /.container-fluid -->
-
-            <!-- begin::Modal -->
-            <div class="modal fade" id="Modal" data-backdrop="static" tabindex="-1" role="dialog" data-bs-keyboard="false" data-bs-backdrop="static">
-                <div class="modal-dialog modal-md modal-dialog-centered" role="document" id="contentModal"></div>
-            </div>
-            <!-- end::Modal -->
 
 <?= $this->endSection(); ?>

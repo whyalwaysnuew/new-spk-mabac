@@ -44,8 +44,8 @@ class User extends Model
     public function getData()
     {
         $query = $this->db->table('user')
-                ->select('user.id, user.nama, user.email, user.username, user_level.user_level')
-                ->join('user_level', 'user_level.id = user.id_user_level')
+                ->select('user.id_user, user.nama, user.email, user.username, user_level.user_level')
+                ->join('user_level', 'user_level.id_user_level = user.id_user_level')
                 ->get();
     
         return $query->getResult();

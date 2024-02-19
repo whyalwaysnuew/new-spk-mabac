@@ -21,10 +21,6 @@ class Alternatif extends BaseController
 
     public function index()
     {
-        $this->alternatif->hapus_hasil();
-        // $this->alternatif->hapus_penilaian();
-        $this->alternatif->hapus_nilai_v();
-
         $data = [
             'title' => 'Alternatif | SPK Mabac',
             'ajax' => 'alternatif',

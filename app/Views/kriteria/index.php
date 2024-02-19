@@ -51,11 +51,11 @@
                                                 <td><?= $data->jenis; ?></td>
                                                 <td><?= $data->bobot; ?></td>
                                                 <td class="text-center align-middle">
-                                                    <a href="<?= base_url('/kriteria/edit/') . $data->id; ?>" type="button" class="btn btn-warning btn-sm" title="Edit">
+                                                    <a href="<?= base_url('/kriteria/edit/') . $data->id_kriteria; ?>" type="button" class="btn btn-warning btn-sm" title="Edit">
                                                         <i class="far fa-edit"></i>
                                                     </a>
                                                     
-                                                    <button id="removeKriteria" data-id="<?= $data->id; ?>" type="button" class="btn btn-danger btn-sm" title="Delete">
+                                                    <button id="removeKriteria" data-id="<?= $data->id_kriteria; ?>" type="button" class="btn btn-danger btn-sm" title="Delete">
                                                         <i class="far fa-trash-alt"></i>
                                                     </button>
                                                 </td>

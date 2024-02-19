@@ -2,15 +2,15 @@
     <div class="modal-header">
         <h4 class="modal-title">Upload Data SubKriteria <?= @$id; ?></h4>
         <!--begin::Close-->
-        <div class="btn btn-sm btn-danger ms-2" data-bs-dismiss="modal" aria-label="Close">
+        <!-- <div class="btn btn-sm btn-danger ms-2" data-bs-dismiss="modal" aria-label="Close">
             <i class="fas fa-times"></i>
-        </div>
+        </div> -->
         <!--end::Close-->
     </div>
 
     <!-- <form id="createForm" class="form" enctype="multipart/form-data"> -->
         <div class="modal-body">
-            <div id="dropzone" class="dropzone rounded bg-light d-flex justify-content-center">
+            <form id="dropzone" method="POST" class="dropzone rounded bg-light d-flex justify-content-center">
                 <!--begin::Message-->
                 <div class="dz-message needsclick">
                     <i class="ki-duotone ki-file-up fs-3x text-primary">
@@ -28,19 +28,14 @@
                     </div>
                     <!--end::Info-->
                 </div>
-            </div>
+            </form>
         </div>
     
         <div class="modal-footer">
             <!--begin::Actions-->
             <div class="d-flex justify-content-center">
-                <button type="button" class="btn btn-danger me-2 fw-bold" data-bs-dismiss="modal">Close</button>
-                <!-- Button Like -->
-                <button type="submit" class="btn btn-primary me-2" id="submitForm">
-                    <!--begin::Indicator labellabel-->
-                    <span class="indicator-label fw-bold">Submit</span>
-                </button>
-                <!-- End Button Like -->
+                <a href="#" class="btn btn-success me-2 fw-bold">Download Template</a>
+                <a href="<?= base_url('/subkriteria'); ?>" class="btn btn-danger me-2 fw-bold" >Close</a>
             </div>
             <!--end::Actions-->
             
@@ -53,31 +48,30 @@
 
     $(document).ready(function () {
         var myDropzone = new Dropzone("#dropzone", {
-            url: base_url + "subkriteria/upload?id=" + <?= @$id; ?>,
+            url: base_url + "subkriteria/upload",
             acceptedFiles: ".xls, .xlsx",
             addRemoveLinks: true,
             maxFilesize: 10,
             dictDefaultMessage: "Drop your Excel file here or click to upload",
+            sending: function (file, xhr, formData) {
+                formData.append('id_kriteria', <?= @$id_kriteria; ?>);
+            },
             success: function (file, response) {
                 Swal.fire(
                     "Success!",
-                    response.message,
+                    response.id_kriteria + response.message,
                     "success"
-                )
-
-                // console.log(response);
-                // alert(response.message);
+                );
             },
             error: function (file, response) {
-                // console.log(response);
                 Swal.fire(
                     "Error!",
                     response,
                     "error"
-                )
-                // alert(response.message);
+                );
             }
         });
+
 
         myDropzone.on("removedfile", function (file) {
             // Handle file removal here

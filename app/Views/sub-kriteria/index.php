@@ -21,7 +21,7 @@
                         <div class="card shadow mb-4">
                             <div class="card-header py-3 align-items-center justify-content-between d-flex">
                                 <h6 class="m-0 font-weight-bold text-primary"><?= $item->keterangan . ' ' . '(' . $item->kode_kriteria . ')'; ?></h6>
-                                <button type="button" class="btn btn-success" onclick="getModalUpload('<?= $item->id ?>')">Upload</button>
+                                <button type="button" class="btn btn-success" onclick="getModalUpload('<?= $item->id_kriteria ?>')">Upload</button>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -39,18 +39,18 @@
                                             <?php if(@$subkriteria) { ?>
                                                 <?php $counter = 1; ?>
                                                 <?php foreach($subkriteria as $no => $data) {?>
-                                                <?php if($item->id == $data->id_kriteria) {?>
+                                                <?php if($item->id_kriteria == $data->id_kriteria) {?>
                                                     
                                                     <tr>
                                                         <td class="text-center"><?= $counter++; ?></td>
                                                         <td><?= $data->deskripsi; ?></td>
                                                         <td><?= $data->nilai; ?></td>
                                                         <td class="text-center align-middle">
-                                                            <a href="<?= base_url('/kriteria/edit/') . $data->id; ?>" type="button" class="btn btn-warning btn-sm" title="Edit">
+                                                            <a href="<?= base_url('/kriteria/edit/') . $data->id_sub_kriteria; ?>" type="button" class="btn btn-warning btn-sm" title="Edit">
                                                                 <i class="far fa-edit"></i>
                                                             </a>
                                                             
-                                                            <button id="removeKriteria" data-id="<?= $data->id; ?>" type="button" class="btn btn-danger btn-sm" title="Delete">
+                                                            <button id="removeKriteria" data-id="<?= $data->id_sub_kriteria; ?>" type="button" class="btn btn-danger btn-sm" title="Delete">
                                                                 <i class="far fa-trash-alt"></i>
                                                             </button>
                                                         </td>

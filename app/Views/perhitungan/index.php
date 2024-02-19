@@ -38,7 +38,7 @@
                                             <?php foreach ($kriteria as $key): ?>
                                             <td>
                                             <?php 
-                                                $data_pencocokan = $perhitungan_model->data_nilai($keys->id,$key->id);
+                                                $data_pencocokan = $perhitungan_model->data_nilai($keys->id_alternatif,$key->id_kriteria);
                                                 echo @$data_pencocokan['nilai'];
                                             ?>
                                             </td>
@@ -52,7 +52,7 @@
                                             <th colspan="2">MAX</th>
                                             <?php
                                                 foreach ($kriteria as $key){
-                                                    $min_max=$perhitungan_model->get_max_min($key->id);
+                                                    $min_max=$perhitungan_model->get_max_min($key->id_kriteria);
                                             ?>
                                                 <td><?= $min_max['max']; ?></td>
                                             <?php
@@ -63,7 +63,7 @@
                                             <th colspan="2">MIN</th>
                                             <?php
                                                 foreach ($kriteria as $key){
-                                                    $min_max=$perhitungan_model->get_max_min($key->id);
+                                                    $min_max=$perhitungan_model->get_max_min($key->id_kriteria);
                                             ?>
                                                 <td><?= $min_max['min']; ?></td>
                                             <?php

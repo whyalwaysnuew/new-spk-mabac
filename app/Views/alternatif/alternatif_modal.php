@@ -2,9 +2,9 @@
     <div class="modal-header">
         <h4 class="modal-title">Upload Data Alternatif</h4>
         <!--begin::Close-->
-        <div class="btn btn-sm btn-danger ms-2" data-bs-dismiss="modal" aria-label="Close">
+        <!-- <div class="btn btn-sm btn-danger ms-2" data-bs-dismiss="modal" aria-label="Close">
             <i class="fas fa-times"></i>
-        </div>
+        </div> -->
         <!--end::Close-->
     </div>
 

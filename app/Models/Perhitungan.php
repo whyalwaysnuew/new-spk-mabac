@@ -55,7 +55,7 @@ class Perhitungan extends Model
 		{
 			$query = $this->db->table('penilaian')
                     ->select('*')
-                    ->join('sub_kriteria', 'penilaian.nilai = sub_kriteria.id')
+                    ->join('sub_kriteria', 'penilaian.nilai = sub_kriteria.id_sub_kriteria')
                     ->where('penilaian.id_alternatif', $id_alternatif)
                     ->where('penilaian.id_kriteria', $id_kriteria)
                     ->get();
@@ -65,19 +65,22 @@ class Perhitungan extends Model
 
 		public function get_max_min($id_kriteria)
         {
-            $query = $this->db->table('penilaian')
-                ->select([
-                    'MAX(sub_kriteria.nilai) AS max',
-                    'MIN(sub_kriteria.nilai) AS min',
-                    'kriteria.jenis'
-                ])
-                ->join('sub_kriteria', 'penilaian.nilai = sub_kriteria.id', 'left') // Use left join to handle potential NULL values
-                ->join('kriteria', 'penilaian.id_kriteria = kriteria.id')
-                ->where('penilaian.id_kriteria', $id_kriteria)
-                ->groupBy('kriteria.jenis') // Group by the non-aggregated column
-                ->get();
+            $query = $this->db->query("SELECT 
+                    MAX(sub_kriteria.nilai) as max, 
+                    MIN(sub_kriteria.nilai) as min, 
+                    GROUP_CONCAT(sub_kriteria.nilai) as nilai, 
+                    kriteria.jenis 
+                FROM 
+                    penilaian 
+                JOIN 
+                    sub_kriteria ON penilaian.nilai = sub_kriteria.id_sub_kriteria 
+                JOIN 
+                    kriteria ON penilaian.id_kriteria = kriteria.id_kriteria 
+                WHERE 
+                    penilaian.id_kriteria = '$id_kriteria';
+            ");
 
-            return $query->getRowArray();
+			return $query->getRowArray();
         }
 		
 		public function get_nilai_v($id_alternatif,$id_kriteria)
@@ -94,9 +97,10 @@ class Perhitungan extends Model
 		
 		public function get_t_alt()
 		{
-			$query = $this->db->table('alternatif')->get();
+			$query = $this->db->query('SELECT COUNT(*) as num_rows FROM alternatif');
+            $row = $query->getRow();
 
-            return $query->getNumRows();
+            return $row->num_rows;
 		}
 		
 		public function get_hasil()
@@ -107,13 +111,13 @@ class Perhitungan extends Model
 		
 		public function get_hasil_alternatif($id_alternatif)
 		{
-			$query = $this->db->query("SELECT * FROM alternatif WHERE id='$id_alternatif';");
+			$query = $this->db->query("SELECT * FROM alternatif WHERE id_alternatif='$id_alternatif';");
 			return $query->getRowArray();		
 		}
 		
 		public function insert_nilai_hasil($hasil_akhir = [])
         {
-            $result = $this->db->insert('hasil', $hasil_akhir);
+            $result = $this->db->table('hasil')->insert($hasil_akhir);
             return $result;
         }
 		
