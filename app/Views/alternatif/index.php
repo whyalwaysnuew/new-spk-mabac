@@ -8,14 +8,14 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Alternatif</h1>
                         <div class="d-flex">
-                            <button class="button btn btn-success shadow-sm mr-2" onclick="getModalUpload()">
+                            <button type="button" class=" btn btn-success shadow-sm mr-2" onclick="getModalUpload()">
                                 <i class="fas fa-cloud-upload-alt mr-2"></i>
                                 Upload Data
                             </button>
-                            <a href="<?= base_url('/alternatif/create'); ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                            <button type="button" onclick="getModalCreate()" class="btn btn-primary shadow-sm">
                                 <i class="fas fa-download fa-sm text-white-50"></i> 
                                 Create
-                            </a>
+                            </button>
                         </div>
                     </div>
 

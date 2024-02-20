@@ -59,3 +59,13 @@ function getModalUpload()
     }
   });
 }
+
+function getModalCreate() {
+  $.ajax({
+    url: base_url + "kriteria/getModalCreate",
+    type: "GET",
+    success: (result) => {
+      $("#Modal").modal("show"), $("#contentModal").html(result);
+    },
+  });
+}

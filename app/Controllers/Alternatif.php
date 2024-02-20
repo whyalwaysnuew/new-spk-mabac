@@ -46,7 +46,35 @@ class Alternatif extends BaseController
 
     public function store()
     {
+        $nama = $this->request->getPost('nama');
         
+        if(@$nama){
+            $data = [
+                'nama' => $nama
+            ];
+
+            $result = $this->alternatif->insertData($data);
+
+            if(@$result) {
+                $response = array(
+                    "response" => 200,
+                    "message" => $nama . " berhasil diinput."
+                );
+            } else {
+                $response = array(
+                    "response" => 404,
+                    "message" => "Terjadi kesalahan! " . $nama . " gagal diinput."
+                );
+            }
+
+        } else {
+            $response = array(
+                "response" => 500,
+                "message" => "Nama tidak boleh kosong!."
+            );
+        }
+
+        echo json_encode($response);
     }
 
 
@@ -77,6 +105,11 @@ class Alternatif extends BaseController
     public function getModalUpload()
     {
         return view('alternatif/alternatif_modal');
+    }
+
+    public function getModalCreate()
+    {
+        return view('alternatif/create_modal');
     }
 
     public function upload()

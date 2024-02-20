@@ -9,6 +9,8 @@ $routes->get('/', 'Home::index');
 
 $routes->get('/alternatif', 'Alternatif::index');
 $routes->get('/alternatif/getModalUpload', 'Alternatif::getModalUpload');
+$routes->get('/alternatif/getModalCreate', 'Alternatif::getModalCreate');
+$routes->post('/alternatif/store', 'Alternatif::store');
 $routes->post('/alternatif/upload', 'Alternatif::upload');
 $routes->post('/alternatif/removeFile', 'Alternatif::removeFile');
 $routes->get('/alternatif/delete', 'Alternatif::delete');
@@ -33,11 +35,15 @@ $routes->post('/penilaian/update', 'Penilaian::update');
 $routes->post('/penilaian/dump', 'Penilaian::dump');
 $routes->get('/penilaian/modalEdit', 'Penilaian::modalEdit');
 $routes->get('/penilaian/modalInput', 'Penilaian::modalInput');
+$routes->get('/penilaian/getModalUpload', 'Penilaian::getModalUpload');
+$routes->get('/penilaian/download', 'Penilaian::download');
 
 
 $routes->get('/kriteria', 'Kriteria::index');
 $routes->get('/kriteria/create', 'Kriteria::create');
 $routes->get('/kriteria/getModalUpload', 'Kriteria::getModalUpload');
+$routes->get('/kriteria/getModalCreate', 'Kriteria::getModalCreate');
+$routes->post('/kriteria/store', 'Kriteria::store');
 $routes->post('/kriteria/upload', 'Kriteria::upload');
 $routes->post('/kriteria/removeFile', 'Kriteria::removeFile');
 $routes->get('/kriteria/delete', 'Kriteria::delete');

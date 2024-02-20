@@ -118,8 +118,18 @@ class Penilaian extends BaseController
         echo json_encode($response);
     }
 
+    public function getModalUpload()
+    {
+        return view('penilaian/penilaian_modal');
+    }
+
     public function dump()
     {
         dd($this->request->getPost());
+    }
+
+    public function download()
+    {
+        
     }
 }

@@ -19,8 +19,12 @@
 
                     <div class="card shadow mb-4">
                         <!-- /.card-header -->
-                        <div class="card-header py-3">
+                        <div class="card-header py-3 d-flex justify-content-between align-items-center">
                             <h6 class="m-0 font-weight-bold text-dark"><i class="fa fa-table"></i> Daftar Data Penilaian</h6>
+                            <button class="btn btn-primary btn-sm" id="buttonDownload">
+                                <i class="fas fa-download mr-2"></i>
+                                Download Excel
+                            </button>
                         </div>
 
                         <div class="card-body">

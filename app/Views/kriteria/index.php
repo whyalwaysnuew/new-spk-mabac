@@ -12,10 +12,10 @@
                                 <i class="fas fa-cloud-upload-alt mr-2"></i>
                                 Upload Data
                             </button>
-                            <a href="<?= base_url('/kriteria/create'); ?>" class="d-none d-sm-inline-block btn btn-primary shadow-sm">
-                                <i class="fas fa-download fa-sm text-white-50"></i> 
+                            <button class="button btn btn-primary shadow-sm mr-2" onclick="getModalCreate()">
+                                <i class="fas fa-plus-square"></i>
                                 Create
-                            </a>
+                            </button>
                         </div>
                     </div>
 
@@ -23,9 +23,6 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex justify-content-between align-items-center">
                             <h6 class="m-0 font-weight-bold text-primary">Data Kriteria</h6>
-                            <a href="<?= base_url('/kriteria'); ?>" class="btn btn-info btn-sm">
-                                <i class="fas fa-sync-alt"></i>
-                            </a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
