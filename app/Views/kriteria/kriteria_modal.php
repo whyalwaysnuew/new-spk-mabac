@@ -2,9 +2,9 @@
     <div class="modal-header">
         <h4 class="modal-title">Upload Data Kriteria</h4>
         <!--begin::Close-->
-        <div class="btn btn-sm btn-danger ms-2" data-bs-dismiss="modal" aria-label="Close">
+        <!-- <div class="btn btn-sm btn-danger ms-2" data-bs-dismiss="modal" aria-label="Close">
             <i class="fas fa-times"></i>
-        </div>
+        </div> -->
         <!--end::Close-->
     </div>
 
@@ -33,7 +33,8 @@
     <div class="modal-footer">
         <!--begin::Actions-->
         <div class="d-flex justify-content-center">
-            <button type="button" class="btn btn-danger me-2 fw-bold" data-bs-dismiss="modal">Close</button>
+            <a href="<?= base_url('/public/uploads/template/template_data_kriteria.xlsx'); ?>" download class="btn btn-primary fw-bold me-2">Download Template</a>
+            <a href="<?= base_url('/kriteria'); ?>" class="btn btn-danger fw-bold" >Close</a>
             <!-- Button Like -->
             <!-- <button type="submit" class="btn btn-primary me-2" id="submitForm">
                 <span class="indicator-label fw-bold">Submit</span>

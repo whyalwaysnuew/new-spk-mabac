@@ -34,8 +34,8 @@
         <div class="modal-footer">
             <!--begin::Actions-->
             <div class="d-flex justify-content-center">
-                <a href="#" class="btn btn-success me-2 fw-bold">Download Template</a>
-                <a href="<?= base_url('/subkriteria'); ?>" class="btn btn-danger me-2 fw-bold" >Close</a>
+                <a href="<?= base_url('/public/uploads/template/template_data_sub_kriteria.xlsx') ?>" download class="btn btn-primary me-2 fw-bold">Download Template</a>
+                <a href="<?= base_url('/subkriteria'); ?>" class="btn btn-danger fw-bold" >Close</a>
             </div>
             <!--end::Actions-->
             

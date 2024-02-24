@@ -33,7 +33,8 @@
     <div class="modal-footer">
         <!--begin::Actions-->
         <div class="d-flex justify-content-center">
-            <a href="<?= base_url('/alternatif'); ?>" class="btn btn-danger me-2 fw-bold" >Close</a>
+            <a href="<?= base_url('/public/uploads/template/template_data_alternatif.xlsx'); ?>" download class="btn btn-primary fw-bold me-2">Download Template</a>
+            <a href="<?= base_url('/alternatif'); ?>" class="btn btn-danger fw-bold" >Close</a>
         </div>
         <!--end::Actions-->
         
