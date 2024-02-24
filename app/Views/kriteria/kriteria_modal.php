@@ -33,7 +33,7 @@
     <div class="modal-footer">
         <!--begin::Actions-->
         <div class="d-flex justify-content-center">
-            <a href="<?= base_url('/public/uploads/template/template_data_kriteria.xlsx'); ?>" download class="btn btn-primary fw-bold me-2">Download Template</a>
+            <a href="<?= base_url('./uploads/template/template_data_kriteria.xlsx'); ?>" download class="btn btn-primary fw-bold me-2">Download Template</a>
             <a href="<?= base_url('/kriteria'); ?>" class="btn btn-danger fw-bold" >Close</a>
             <!-- Button Like -->
             <!-- <button type="submit" class="btn btn-primary me-2" id="submitForm">
