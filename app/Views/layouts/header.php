@@ -47,13 +47,6 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item <?= @$menu == 'Dashboard' ? 'active' : ''; ?>">
-                <a class="nav-link" href="<?= base_url(''); ?>">
-                    <i class="fas fa-border-all"></i>
-                    <span>Dashboard</span></a>
-            </li>
-
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -62,6 +55,7 @@
                 Main
             </div>
 
+            <?php if(session()->get('level') == 1){ ?>
             <!-- Nav Item -  -->
             <li class="nav-item <?= @$menu == 'Alternatif' ? 'active' : ''; ?>">
                 <a class="nav-link" href="<?= base_url('/alternatif'); ?>">
@@ -113,13 +107,24 @@
                     </div>
                 </div>
             </li>
+            <?php } ?>
 
+            <li class="nav-item <?= @$menu == 'hasil' ? 'active' : '' ; ?>">
+                <a class="nav-link" href="<?= base_url('/perhitungan/hasil'); ?>">
+                    <i class="fas fa-users"></i>
+                    <span>Barang Terlaris</span></a>
+            </li>
+
+            <?php if(session()->get('level') == 1){ ?>
             <!-- Nav Item -  -->
             <li class="nav-item <?= @$menu == 'user' ? 'active' : '' ; ?>">
                 <a class="nav-link" href="<?= base_url('/user'); ?>">
                     <i class="fas fa-users"></i>
                     <span>User</span></a>
             </li>
+            
+            <?php } ?>
+            
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -154,15 +159,20 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= session()->get('nama'); ?></span>
                                 <img class="img-profile rounded-circle"
-                                    src="<?= base_url('/assets/sbadmin2/img/undraw_profile.svg')?>">
+                                src="<?= base_url('/assets/sbadmin2/img/undraw_profile.svg')?>">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                            aria-labelledby="userDropdown">
+                                <span class="dropdown-item text-center mt-2">
+                                    <span class="fw-bold">
+                                        <?= session()->get('level_name'); ?>
+                                    </span>
+                                </span>
+                                <hr class="py-0">
+                                <a class="dropdown-item" href="<?= base_url('auth/logout'); ?>" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>

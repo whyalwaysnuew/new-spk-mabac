@@ -47,6 +47,13 @@ class Subkriteria extends Model
         return $query->getResult();
     }
 
+    public function getDetail($id)
+    {
+        $query = $this->db->table('sub_kriteria')->where('id_sub_kriteria', $id)->get();
+
+        return $query->getRow();
+    }
+
     public function getDataKriteria()
     {
         $query = $this->db->table('kriteria')->get();
@@ -58,6 +65,13 @@ class Subkriteria extends Model
     {
         return $this->db->table('sub_kriteria')
                 ->insert($data);
+    }
+
+    public function updateData($id, $data)
+    {
+        return $this->db->table('sub_kriteria')
+                ->where('id_sub_kriteria', $id)
+                ->update($data);
     }
 
     public function deleteData($id_sub_kriteria)

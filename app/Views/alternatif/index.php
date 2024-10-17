@@ -43,9 +43,9 @@
                                                 <td class="text-center"><?= $no+1; ?></td>
                                                 <td><?= $data->nama; ?></td>
                                                 <td class="text-center align-middle">
-                                                    <a href="<?= base_url('/alternatif/edit/') . $data->id_alternatif; ?>" type="button" class="btn btn-warning btn-sm" title="Edit">
+                                                    <button type="button" onclick="getModalEdit('<?= $data->id_alternatif; ?>')" class="btn btn-warning btn-sm">
                                                         <i class="far fa-edit"></i>
-                                                    </a>
+                                                    </button>
                                                     
                                                     <button id="removeAlternatif" data-id="<?= $data->id_alternatif; ?>" type="button" class="btn btn-danger btn-sm" title="Delete">
                                                         <i class="far fa-trash-alt"></i>

@@ -49,10 +49,26 @@ class Kriteria extends Model
         return $query->getResult();
     }
 
+    public function getDetail($id)
+    {
+        $query = $this->db->table('kriteria')
+                ->where('id_kriteria', $id)
+                ->get();
+
+        return $query->getRow();
+    }
+
     public function insertData($data)
     {
         return $this->db->table('kriteria')
                 ->insert($data);
+    }
+
+    public function updateData($id, $data)
+    {
+        return $this->db->table('kriteria')
+                ->where('id_kriteria', $id)
+                ->update($data);
     }
 
     public function checkKodeKriteria($kodeKriteria)

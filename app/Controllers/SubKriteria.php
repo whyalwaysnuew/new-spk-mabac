@@ -30,6 +30,58 @@ class Subkriteria extends BaseController
         return view('sub-kriteria/index', $data);
     }
 
+    public function getModalEdit($id)
+    {
+        $data = [
+            'subkriteria' => $this->subkriteria->getDetail($id)
+        ];
+
+        return view('sub-kriteria/edit', $data);
+    }
+
+    public function update()
+    {
+        $id = $this->request->getPost('id');
+        $deskripsi = $this->request->getPost('deskripsi');
+        $nilai = $this->request->getPost('nilai');
+        
+            if(@$nilai){
+                if(@$deskripsi){
+                    $data = [
+                        'deskripsi' => $deskripsi,
+                        'nilai' => $nilai,
+                    ];
+        
+                    $result = $this->subkriteria->updateData($id, $data);
+
+                    if(@$result)
+                    {
+                        $response = array(
+                            "response" => 200,
+                            "message" => $deskripsi . " berhasil diupdate."
+                        );
+                    } else {
+                        $response = array(
+                            "response" => 404,
+                            "message" => "Terjadi kesalahan! " . $deskripsi . " gagal diupdate."
+                        );
+                    }
+                } else {
+                    $response = array(
+                        "response" => 504,
+                        "message" => "Deskripsi tidak boleh kosong!."
+                    );
+                }
+            } else {
+                $response = array(
+                    "response" => 503,
+                    "message" => "Nilai tidak boleh kosong!."
+                );
+            }
+
+        echo json_encode($response);
+    }
+
     public function delete()
     {
         $id = $this->request->getGet('id');

@@ -59,6 +59,14 @@ function getModalUpload(id) {
     });
 }
 
-
+function getModalEdit(id) {
+  $.ajax({
+    url: base_url + "subkriteria/getModalEdit/" + id,
+    type: "GET",
+    success: (result) => {
+      $("#Modal").modal("show"), $("#contentModal").html(result);
+    },
+  });
+}
 
 

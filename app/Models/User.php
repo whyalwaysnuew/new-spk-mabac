@@ -50,4 +50,38 @@ class User extends Model
     
         return $query->getResult();
     }
+
+    public function getDetail($id)
+    {
+        $query = $this->db->table('user')
+                ->select('user.id_user, user.nama, user.email, user.username, user.id_user_level')
+                ->where('id_user', $id)
+                ->get();
+
+        return $query->getRow();
+    }
+
+    public function getLevels()
+    {
+        $query = $this->db->table('user_level')->get();
+
+        return $query->getResult();
+    }
+
+    public function insertData($data)
+    {
+        return $this->db->table('user')->insert($data);
+    }
+
+    public function updateData($id, $data)
+    {
+        return $this->db->table('user')->where('id_user', $id)->update($data);
+    }
+
+    public function deleteData($id)
+    {
+        $query = $this->db->table('user')
+                ->where('id_user', $id)
+                ->delete();
+    }
 }

@@ -103,6 +103,67 @@ class Kriteria extends BaseController
         echo json_encode($response);
     }
 
+    public function update()
+    {
+        $id = $this->request->getPost('id');
+        $kode_kriteria = $this->request->getPost('kode_kriteria');
+        $keterangan = $this->request->getPost('keterangan');
+        $bobot = $this->request->getPost('bobot');
+        $jenis = $this->request->getPost('jenis');
+        
+        if(@$kode_kriteria){
+            if(@$keterangan){
+                if(@$bobot){
+                    if(@$jenis){
+                        $data = [
+                            'kode_kriteria' => $kode_kriteria,
+                            'keterangan' => $keterangan,
+                            'bobot' => $bobot,
+                            'jenis' => $jenis,
+                        ];
+            
+                        $result = $this->kriteria->updateData($id, $data);
+
+                        if(@$result)
+                        {
+                            $response = array(
+                                "response" => 200,
+                                "message" => $keterangan . " berhasil diupdate."
+                            );
+                        } else {
+                            $response = array(
+                                "response" => 404,
+                                "message" => "Terjadi kesalahan! " . $keterangan . " gagal diupdate."
+                            );
+                        }
+                    } else {
+                        $response = array(
+                            "response" => 504,
+                            "message" => "Pilih jenis kriteria!."
+                        );
+                    }
+                } else {
+                    $response = array(
+                        "response" => 503,
+                        "message" => "Bobot kriteria tidak boleh kosong!."
+                    );
+                }
+            } else {
+                $response = array(
+                    "response" => 502,
+                    "message" => "Nama Kriteria tidak boleh kosong!."
+                );
+            }
+        } else {
+            $response = array(
+                "response" => 501,
+                "message" => "Kode Kriteria tidak boleh kosong!."
+            );
+        }
+
+        echo json_encode($response);
+    }
+
 
     public function delete()
     {
@@ -134,6 +195,15 @@ class Kriteria extends BaseController
     public function getModalCreate()
     {
         return view('kriteria/create_modal');
+    }
+
+    public function getModalEdit($id)
+    {
+        $data = [
+            'kriteria' => $this->kriteria->getDetail($id)
+        ];
+
+        return view('kriteria/edit', $data);
     }
 
     public function upload()

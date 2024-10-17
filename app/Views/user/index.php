@@ -7,10 +7,10 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">User</h1>
-                        <a href="<?= base_url('/user/create'); ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                        <button type="button" onclick="getModalCreate()" class="btn btn-primary shadow-sm">
                             <i class="fas fa-download fa-sm text-white-50"></i> 
                             Create
-                        </a>
+                        </button>
                     </div>
 
 
@@ -43,9 +43,9 @@
                                                 <td><?= $user->username; ?></td>
                                                 <td><?= $user->user_level; ?></td>
                                                 <td class="text-center align-middle">
-                                                    <a href="<?= base_url('/user/edit/') . $user->id_user; ?>" type="button" class="btn btn-warning btn-sm" title="Edit">
+                                                    <button type="button" onclick="getModalEdit('<?= $user->id_user; ?>')" class="btn btn-warning btn-sm">
                                                         <i class="far fa-edit"></i>
-                                                    </a>
+                                                    </button>
                                                     
                                                     <button id="removeUser" data-id="<?= $user->id_user; ?>" type="button" class="btn btn-danger btn-sm" title="Delete">
                                                         <i class="far fa-trash-alt"></i>
@@ -62,6 +62,11 @@
                 </div>
                 <!-- /.container-fluid -->
 
+                <!-- begin::Modal -->
+                <div class="modal fade" id="Modal" data-backdrop="static" tabindex="-1" role="dialog" data-bs-keyboard="false" data-bs-backdrop="static">
+                    <div class="modal-dialog modal-md modal-dialog-centered" role="document" id="contentModal"></div>
+                </div>
+                <!-- end::Modal -->
             
 
 <?= $this->endSection(); ?>

@@ -7,12 +7,7 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Data Penilaian</h1>
-                        <div class="d-flex">
-                            <button class="button btn btn-success shadow-sm mr-2" onclick="getModalUpload()">
-                                <i class="fas fa-cloud-upload-alt mr-2"></i>
-                                Upload Data
-                            </button>
-                        </div>
+                        
                     </div>
 
                     
@@ -21,10 +16,6 @@
                         <!-- /.card-header -->
                         <div class="card-header py-3 d-flex justify-content-between align-items-center">
                             <h6 class="m-0 font-weight-bold text-dark"><i class="fa fa-table"></i> Daftar Data Penilaian</h6>
-                            <button class="btn btn-primary btn-sm" id="buttonDownload">
-                                <i class="fas fa-download mr-2"></i>
-                                Download Excel
-                            </button>
                         </div>
 
                         <div class="card-body">

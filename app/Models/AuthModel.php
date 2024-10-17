@@ -4,9 +4,9 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Auth extends Model
+class AuthModel extends Model
 {
-    protected $table            = 'auths';
+    protected $table            = 'user';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
@@ -39,4 +39,15 @@ class Auth extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getDataUser($username)
+    {
+        $query = $this->db->table($this->table)
+                ->select('user.*, user_level.*')
+                ->join('user_level', 'user_level.id_user_level = user.id_user_level', 'left')
+                ->where('username', $username)
+                ->get();
+
+        return $query->getRow();
+    }
 }

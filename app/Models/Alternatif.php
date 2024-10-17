@@ -47,10 +47,24 @@ class Alternatif extends Model
         return $query->getResult();
     }
 
+    public function getDetail($id)
+    {
+        $query = $this->db->table('alternatif')->where('id_alternatif', $id)->get();
+
+        return $query->getRow();
+    }
+
     public function insertData($data)
     {
         return $this->db->table('alternatif')
                 ->insert($data);
+    }
+
+    public function updateData($id, $data)
+    {
+        return $this->db->table('alternatif')
+                ->where('id_alternatif', $id)
+                ->update($data);
     }
 
     public function deleteData($id)
