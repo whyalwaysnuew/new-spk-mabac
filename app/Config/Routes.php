@@ -22,6 +22,9 @@ $routes->post('/alternatif/removeFile', 'Alternatif::removeFile', ['filter' => '
 $routes->get('/alternatif/delete', 'Alternatif::delete', ['filter' => 'auth']);
 
 
+$routes->get('/profile', 'Profile::index', ['filter' => 'auth']);
+$routes->post('/profile/update', 'Profile::update', ['filter' => 'auth']);
+
 $routes->get('/user', 'User::index', ['filter' => 'auth']);
 $routes->get('/user/create', 'User::create', ['filter' => 'auth']);
 $routes->post('/user/store', 'User::store', ['filter' => 'auth']);
@@ -39,6 +42,7 @@ $routes->get('/perhitungan/perhitungan-v', 'Perhitungan::v', ['filter' => 'auth'
 $routes->get('/perhitungan/perhitungan-g', 'Perhitungan::g', ['filter' => 'auth']);
 $routes->get('/perhitungan/perhitungan-q', 'Perhitungan::q', ['filter' => 'auth']);
 $routes->get('/perhitungan/hasil', 'Perhitungan::hasil', ['filter' => 'auth']);
+$routes->get('/perhitungan/download', 'Perhitungan::download', ['filter' => 'auth']);
 
 
 $routes->get('/penilaian', 'Penilaian::index', ['filter' => 'auth']);

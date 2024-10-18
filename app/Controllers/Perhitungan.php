@@ -373,11 +373,22 @@ class Perhitungan extends BaseController
     public function hasil()
     {
          $data = [
+                'menu' => 'hasil',
                 'title' => "Hasil | SPK MABAC",
 				'hasil'=> $this->perhitungan->get_hasil(),
                 'perhitungan_model' => $this->perhitungan
             ];
 			
             return view('perhitungan/hasil', $data);
+    }
+
+    public function download()
+    {
+        $data = [
+            'perhitungan_model' => $this->perhitungan,
+            'data' => $this->perhitungan->get_hasil(),
+        ];
+
+        return view('perhitungan/print', $data);
     }
 }

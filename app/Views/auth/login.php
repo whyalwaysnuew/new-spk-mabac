@@ -25,12 +25,22 @@
 <body class="bg-gradient-primary">
 
     <div class="container">
-
-        <!-- Outer Row -->
         <div class="row justify-content-center py-5">
+            <div class="col-12 col-md-7 mt-5">
+                <div class="card bg-none o-hidden border-0 my-5 text-white" style="background: none;">
+                    <div class="text-justify card-body p-0">
+                        <h4 style="font-weight: 800;">Sistem Pendukung Keputusan Metode MABAC</h4>
+                        <p class="pt-4">
+                            Sistem Pendukung Keputusan (SPK) adalah sebuah sistem berbasis komputer dengan antarmuka antara mesin/komputer dan pengguna. SPK ditujukan untuk membantu pembuat keputusan dalam menyelesaikan suatu masalah dalam berbagai level manajemen dan bukan untuk mengganti posisi manusia sebagai pembuat keputusan.
+                        </p>
+                        <p>
+                            Multi-Attributive Border Approximation Area Comparison (MABAC) merupakan salah satu metode sistem pendukung keputusan yang bersifat multikriteria dan dianggap sebagai salah satu metode yang handal dalam pengambilan keputusan rasional.
+                        </p>
+                    </div>
+                </div>
+            </div>
 
-            <div class="col-12 col-md-6">
-
+            <div class="col-12 col-md-5">
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
@@ -62,13 +72,11 @@
                 </div>
 
             </div>
-
         </div>
-
     </div>
 
     <script>var hostUrl = "<?= base_url('/assets/'); ?>"</script>
-    //
+    
     <script src="<?= base_url('/assets/sbadmin2/vendor/jquery/jquery.min.js') ?>"></script>
     <script src="<?= base_url('/assets/sbadmin2/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
     <script src="<?= base_url('/assets/sbadmin2/vendor/jquery-easing/jquery.easing.min.js') ?>"></script>

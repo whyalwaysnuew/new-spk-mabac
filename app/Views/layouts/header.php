@@ -96,7 +96,6 @@
                 </a>
                 <div id="collapsePages" class="collapse <?= @$menu == 'perhitungan' ? 'show' : ''; ?>" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?= base_url('/perhitungan/hasil'); ?>">Hasil Akhir</a>
                         <div class="collapse-divider"></div>
                         <a class="collapse-item" href="<?= base_url('/perhitungan/perhitungan-x'); ?>">Perhitungan (X)</a>
                         <a class="collapse-item" href="<?= base_url('/perhitungan/perhitungan-n'); ?>">Perhitungan (N)</a>
@@ -111,9 +110,17 @@
 
             <li class="nav-item <?= @$menu == 'hasil' ? 'active' : '' ; ?>">
                 <a class="nav-link" href="<?= base_url('/perhitungan/hasil'); ?>">
-                    <i class="fas fa-users"></i>
+                    <i class="fab fa-hackerrank"></i>
                     <span>Barang Terlaris</span></a>
             </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Master
+            </div>
 
             <?php if(session()->get('level') == 1){ ?>
             <!-- Nav Item -  -->
@@ -125,6 +132,11 @@
             
             <?php } ?>
             
+            <li class="nav-item <?= @$menu == 'profile' ? 'active' : '' ; ?>">
+                <a class="nav-link" href="<?= base_url('/profile'); ?>">
+                    <i class="fas fa-user-alt"></i>
+                    <span>Profile</span></a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
